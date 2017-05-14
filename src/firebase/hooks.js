@@ -7,7 +7,7 @@ export default () => {
   firebase.auth().onAuthStateChanged(user => {
     if (!user) {
       store.dispatch(setCurrentUser(null))
-      store.dispatch(push('/sign-up'))
+      store.dispatch(push('/sign-in'))
       return
     }
 
