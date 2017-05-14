@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { watchMatches, unwatchMatches } from '../actions/matches'
 
 class Matches extends React.Component {
@@ -16,7 +17,9 @@ class Matches extends React.Component {
       <div>
         {this.props.matches.map(match => (
           <div key={match.id}>
-            <h1>{match.name}</h1>
+            <Link to={`/matches/${match.id}`}>
+              <h1>{match.name}</h1>
+            </Link>
             <p>Owner: {match.owner.email}</p>
           </div>
         ))}
