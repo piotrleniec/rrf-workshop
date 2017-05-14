@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import SignOutButton from './SignOutButton'
 import logo from './logo.svg'
 import './App.css'
 
@@ -12,6 +13,7 @@ const App = ({ answer }) => (
     <p className="App-intro">
       The answer is <strong>{answer}</strong>.
     </p>
+    <SignOutButton />
   </div>
 )
 
