@@ -16,4 +16,10 @@ export default () => {
       email: user.email
     }))
   })
+
+  firebase.auth().getRedirectResult().then(result => {
+    if (!result.user) return
+
+    store.dispatch(push('/'))
+  })
 }
