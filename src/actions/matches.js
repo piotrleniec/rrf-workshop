@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import { SET_MATCHES } from '../actionTypes'
+import { SET_MATCHES, SYNCHRONIZE_MATCH } from '../actionTypes'
 
 export const createMatch = name => (dispatch, getState) => {
   firebase.database().ref('matches').push({
@@ -31,4 +31,19 @@ export const watchMatches = () => dispatch => {
 
 export const unwatchMatches = () => () => {
   firebase.database().ref('matches').off()
+}
+
+export const synchronizeMatch = match => ({
+  type: SYNCHRONIZE_MATCH,
+  match
+})
+
+export const watchMatch = matchId => dispatch => {
+  firebase.database().ref(`matches/${matchId}`).on('value', snapshot => {
+    dispatch(synchronizeMatch({ ...snapshot.val(), id: matchId }))
+  })
+}
+
+export const unwatchMatch = matchId => () => {
+  firebase.database().ref(`matches/${matchId}`).off()
 }
