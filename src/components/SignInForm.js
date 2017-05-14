@@ -2,6 +2,7 @@ import React from 'react'
 import { reduxForm, Field, change, reset } from 'redux-form'
 import firebase from 'firebase'
 import { push } from 'react-router-redux'
+import GoogleSignInButton from './GoogleSignInButton'
 
 const SignInForm = props => (
   <form onSubmit={props.handleSubmit}>
@@ -20,6 +21,10 @@ const SignInForm = props => (
     <br />
 
     <button>Sign up</button>
+
+    <br />
+
+    <GoogleSignInButton />
   </form>
 )
 
