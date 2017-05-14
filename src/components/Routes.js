@@ -6,6 +6,7 @@ import App from './App'
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
 import CreateMatchForm from './CreateMatchForm'
+import Matches from './Matches'
 
 const Routes = () => (
   <ConnectedRouter history={history}>
@@ -14,6 +15,7 @@ const Routes = () => (
       <Route exact path="/sign-up" component={SignUpForm} />
       <Route exact path="/sign-in" component={SignInForm} />
       <Route exact path="/matches/new" component={CreateMatchForm} />
+      <Route exact path="/matches" component={Matches} />
     </Switch>
   </ConnectedRouter>
 )
