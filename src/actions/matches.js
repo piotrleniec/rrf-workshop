@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 import { SET_MATCHES, SYNCHRONIZE_MATCH } from '../actionTypes'
+import { push } from 'react-router-redux'
 
 export const createMatch = name => (dispatch, getState) => {
   firebase.database().ref('matches').push({
@@ -44,4 +45,12 @@ export const watchMatch = matchId => dispatch => {
 
 export const unwatchMatch = matchId => () => {
   firebase.database().ref(`matches/${matchId}`).off()
+}
+
+export const joinMatch = matchId => (dispatch, getState) => {
+  firebase.database().ref(`matches/${matchId}`).update({
+    opponent: getState().currentUser
+  }).then(() => {
+    dispatch(push(`/matches/${matchId}`))
+  })
 }
