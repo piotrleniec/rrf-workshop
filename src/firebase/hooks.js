@@ -17,8 +17,13 @@ export default () => {
   })
 
   firebase.auth().getRedirectResult().then(result => {
-    if (!result.user) return
+    const { user } = result
 
+    if (!user) return
+
+    firebase.database()
+            .ref(`users/${user.uid}`)
+            .set({ id: user.uid, email: user.email })
     store.dispatch(push('/'))
   })
 }
