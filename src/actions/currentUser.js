@@ -18,3 +18,8 @@ export const signInWithGoogle = () => dispatch => {
       dispatch(push('/'))
     })
 }
+
+export const signOut = () => dispatch => {
+  firebase.auth().signOut()
+  dispatch(push('/sign-in'))
+}
