@@ -7,16 +7,11 @@ export const setCurrentUser = user => ({
   user
 })
 
-export const signInWithGoogle = () => dispatch => {
+export const signInWithGoogle = () => () => {
   const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
   googleAuthProvider.addScope('email')
 
-  firebase
-    .auth()
-    .signInWithRedirect(googleAuthProvider)
-    .then(() => {
-      dispatch(push('/'))
-    })
+  firebase.auth().signInWithRedirect(googleAuthProvider)
 }
 
 export const signOut = () => dispatch => {
