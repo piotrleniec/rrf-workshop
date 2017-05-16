@@ -1,7 +1,6 @@
 import React from 'react'
-import { reduxForm, Field, change, reset } from 'redux-form'
-import firebase from 'firebase'
-import { push } from 'react-router-redux'
+import { reduxForm, Field } from 'redux-form'
+import { submitSignUpForm } from '../actions/signUpForm'
 
 const SignUpForm = props => (
   <form onSubmit={props.handleSubmit}>
@@ -25,16 +24,5 @@ const SignUpForm = props => (
 
 export default reduxForm({
   form: 'signUpForm',
-  onSubmit: (values, dispatch) => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(values.email, values.password)
-      .then(() => {
-        dispatch(reset('signUpForm'))
-        dispatch(push('/'))
-      })
-      .catch(() => {
-        dispatch(change('signUpForm', 'password', ''))
-      })
-  }
+  onSubmit: submitSignUpForm
 })(SignUpForm)
