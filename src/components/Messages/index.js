@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { watchMessages, unwatchMessages } from '../actions/messages'
-import './Messages.css'
+import { watchMessages, unwatchMessages } from '../../actions/messages'
+import './index.css'
 
 class Messages extends React.Component {
   componentDidMount() {
