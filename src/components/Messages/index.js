@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { watchMessages, unwatchMessages } from '../../actions/messages'
+import Message from './Message'
 import './index.css'
 
 class Messages extends React.Component {
@@ -22,9 +23,7 @@ class Messages extends React.Component {
     return (
       <div ref="messagesContainer" className="messages">
         {this.props.messages.map(message => (
-          <div key={message.id}>
-            [{message.user.email}] {message.text}
-          </div>
+          <Message key={message.id} message={message} />
         ))}
       </div>
     )
