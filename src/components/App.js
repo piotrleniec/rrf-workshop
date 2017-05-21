@@ -3,6 +3,7 @@ import SignOutButton from './SignOutButton'
 import Users from './Users'
 import CreateMessageForm from './CreateMessageForm'
 import Messages from './Messages'
+import ImageUploadButton from './ImageUploadButton'
 
 const App = () => (
   <div>
@@ -11,6 +12,8 @@ const App = () => (
     <Messages />
     <br />
     <CreateMessageForm />
+    <br />
+    <ImageUploadButton />
     <br />
     <SignOutButton />
   </div>
