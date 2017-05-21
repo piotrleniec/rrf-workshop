@@ -33,3 +33,24 @@ export const watchMessages = () => (dispatch, getState) => {
 export const unwatchMessages = () => () => {
   firebase.database().ref('messages').off()
 }
+
+export const createImageMessage = image => (dispatch, getState) => {
+  const newMessageRef = firebase.database().ref('messages').push()
+  const messageId = newMessageRef.key
+  const imageExtension = image.name.split('.')[1]
+
+  firebase
+    .storage()
+    .ref('messages')
+    .child(`${messageId}.${imageExtension}`)
+    .put(image)
+    .then(snapshot => {
+      newMessageRef.set({
+        id: messageId,
+        type: 'image',
+        imageURL: snapshot.downloadURL,
+        user: getState().currentUser,
+        createdAt: new Date().getTime()
+      })
+    })
+}
