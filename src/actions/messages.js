@@ -1,11 +1,12 @@
 import firebase from 'firebase'
 import { SET_MESSAGES } from '../actionTypes'
 
-export const createMessage = text => (dispatch, getState) => {
+export const createTextMessage = text => (dispatch, getState) => {
   const newMessageRef = firebase.database().ref('messages').push()
 
   newMessageRef.set({
     id: newMessageRef.key,
+    type: 'text',
     text,
     user: getState().currentUser,
     createdAt: new Date().getTime()

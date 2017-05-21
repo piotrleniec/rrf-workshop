@@ -1,7 +1,7 @@
-import { createMessage } from './messages'
+import { createTextMessage } from './messages'
 import { reset } from 'redux-form'
 
 export const submitCreateMessageForm = (values, dispatch) => {
-  dispatch(createMessage(values.text))
+  dispatch(createTextMessage(values.text))
   dispatch(reset('createMessageForm'))
 }
